@@ -3,12 +3,12 @@ on: [push]
 jobs:
 
   checkout:
-    runs-on: docker
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
   node:
-    runs-on: docker
+    runs-on: ubuntu-latest
     container:
       image: node:20
     steps:
@@ -20,7 +20,7 @@ jobs:
         run: echo "test=hello" >> foo.txt
 
   python:
-    runs-on: docker
+    runs-on: ubuntu-latest
     container:
       image: python:3
     needs: node
