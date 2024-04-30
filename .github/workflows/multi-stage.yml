@@ -1,24 +1,22 @@
-name: Multi Stage
 on: [push]
 jobs:
-
   checkout:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
   node:
     runs-on: ubuntu-latest
     container:
       image: node:20
+    needs: checkout
     steps:
-      - name: Current directory path
-        run: pwd
-      - name: Node version
-        run: node --version
-      - name: create foo
-        run: echo "test=hello" >> foo.txt
-
+    - id: node version
+      run:
+        pwd
+        ls -lah
+        which node
+    - id: create foo
+      run: echo "test=hello" >> foo.txt
   python:
     runs-on: ubuntu-latest
     container:
