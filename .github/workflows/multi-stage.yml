@@ -10,12 +10,12 @@ jobs:
       image: node:20
     needs: checkout
     steps:
-    - id: node version
+    - id: node-version
       run:
         pwd
         ls -lah
         which node
-    - id: create foo
+    - id: create-foo
       run: echo "test=hello" >> foo.txt
   python:
     runs-on: ubuntu-latest
